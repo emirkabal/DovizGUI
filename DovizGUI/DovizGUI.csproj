@@ -57,8 +57,9 @@
     <Reference Include="discord-rpc">
       <HintPath>C:\Users\emirk\Desktop\DovizGUI\discord-rpc.dll</HintPath>
     </Reference>
-    <Reference Include="DiscordRPC">
-      <HintPath>C:\Users\emirk\Desktop\DovizGUI\DiscordRPC.dll</HintPath>
+    <Reference Include="DiscordRPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\emirk\Desktop\doviz_win-1.0stable\DiscordRPC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>

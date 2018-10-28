@@ -55,13 +55,14 @@
             this.github = new System.Windows.Forms.Button();
             this.author = new System.Windows.Forms.Button();
             this.version_label = new System.Windows.Forms.Label();
+            this.updater_button = new System.Windows.Forms.Button();
+            this.update_label = new System.Windows.Forms.Label();
+            this.update_version = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richpresence
             // 
             this.richpresence.AutoSize = true;
-            this.richpresence.Checked = true;
-            this.richpresence.CheckState = System.Windows.Forms.CheckState.Checked;
             this.richpresence.Location = new System.Drawing.Point(12, 359);
             this.richpresence.Name = "richpresence";
             this.richpresence.Size = new System.Drawing.Size(135, 17);
@@ -309,12 +310,49 @@
             this.version_label.TabIndex = 29;
             this.version_label.Text = "version";
             // 
+            // updater_button
+            // 
+            this.updater_button.Enabled = false;
+            this.updater_button.Location = new System.Drawing.Point(343, 327);
+            this.updater_button.Name = "updater_button";
+            this.updater_button.Size = new System.Drawing.Size(112, 29);
+            this.updater_button.TabIndex = 30;
+            this.updater_button.Text = "Arayüzü Güncelle";
+            this.updater_button.UseVisualStyleBackColor = true;
+            this.updater_button.Click += new System.EventHandler(this.updater_button_Click);
+            // 
+            // update_label
+            // 
+            this.update_label.AutoSize = true;
+            this.update_label.ForeColor = System.Drawing.Color.Lime;
+            this.update_label.Location = new System.Drawing.Point(342, 311);
+            this.update_label.Name = "update_label";
+            this.update_label.Size = new System.Drawing.Size(64, 13);
+            this.update_label.TabIndex = 10;
+            this.update_label.Text = "Yeni Sürüm:";
+            this.update_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.update_label.Visible = false;
+            // 
+            // update_version
+            // 
+            this.update_version.AutoSize = true;
+            this.update_version.ForeColor = System.Drawing.Color.Lime;
+            this.update_version.Location = new System.Drawing.Point(402, 311);
+            this.update_version.Name = "update_version";
+            this.update_version.Size = new System.Drawing.Size(22, 13);
+            this.update_version.TabIndex = 31;
+            this.update_version.Text = "1.0";
+            this.update_version.Visible = false;
+            // 
             // DovizGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(462, 388);
+            this.Controls.Add(this.update_version);
+            this.Controls.Add(this.update_label);
+            this.Controls.Add(this.updater_button);
             this.Controls.Add(this.version_label);
             this.Controls.Add(this.author);
             this.Controls.Add(this.github);
@@ -376,6 +414,9 @@
         private System.Windows.Forms.Button github;
         private System.Windows.Forms.Button author;
         private System.Windows.Forms.Label version_label;
+        private System.Windows.Forms.Button updater_button;
+        private System.Windows.Forms.Label update_label;
+        private System.Windows.Forms.Label update_version;
     }
 }
 

@@ -18,10 +18,16 @@ namespace DovizGUI
     public partial class DovizGUI : Form
     {
         public DiscordRpcClient client;
-        public static String version = "1.0-stable";
-        public static Boolean PresenceStatus = true;
+        public static String CLIENT_VERSION = "v1.1-stable";
+        public static Boolean PresenceStatus = false;
+        public static Boolean PresenceInstalled = false;
         public static Boolean AutoUpdate = true;
-
+        //UPDATER
+        public static String UPDATER_VERSION = null;
+        public static String UPDATER_URL = null;
+        public static String UPDATER_AUTHOR = null;
+        public static String UPDATER_GITHUB = null;
+        //UPDATER
         public DovizGUI()
         {
             InitializeComponent();
@@ -31,32 +37,13 @@ namespace DovizGUI
         // LOOP
         private void loop_Tick(object sender, EventArgs e)
         {
-            if(AutoUpdate == true)
-            {
-                this.updateDoviz();
-                if (PresenceStatus == true)
-                {
-                    this.PresenceUpdate();
-                }
-                else
-                {
-                    this.removePresence();
-                }
-            }
+            if(AutoUpdate == true) this.update();
         }
 
         //Güncelle - Button
         private void update_button_Click(object sender, EventArgs e)
         {
-            this.updateDoviz();
-            if (PresenceStatus == true)
-            {
-                this.PresenceUpdate();
-            }
-            else
-            {
-                this.removePresence();
-            }
+            this.update();
         }
 
         //Discord Rich Presence - Check Box
@@ -67,6 +54,11 @@ namespace DovizGUI
                 PresenceStatus = false;
             }else
             {
+                if (PresenceInstalled == false)
+                {
+                    PresenceInstalled = true;
+                    this.PresenceInstall();
+                }
                 PresenceStatus = true;
             }
         }
@@ -85,14 +77,26 @@ namespace DovizGUI
             }
         }
 
-        private void DovizGUI_Load(object sender, EventArgs e)
+        void update()
         {
-            version_label.Text = "v" + version;
-            this.PresenceInstall();
-            this.PresenceUpdate();
+            version_label.Text = CLIENT_VERSION;
+            this.checkNetwork();
+            this.checkUpdates();
             this.updateDoviz();
+            if (PresenceInstalled == false) return;
+            if (PresenceStatus == true) this.PresenceUpdate();
+            else this.removePresence();
         }
 
+
+        //LOAD
+        private void DovizGUI_Load(object sender, EventArgs e)
+        {
+            this.update();
+        }
+
+
+        //DOVİZ UPDATE
         async void updateDoviz()
         {
             using (var httpClient = new HttpClient())
@@ -121,7 +125,55 @@ namespace DovizGUI
                 //System.Diagnostics.Debug.WriteLine(json);
             }
         }
+        //UPDATER
+        async Task checkUpdater()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var str = await httpClient.GetStringAsync("http://api.emirkabal.xyz/dovizgui/updater.json");
+                dynamic json = JObject.Parse(str);
+                UPDATER_VERSION = json["version"];
+                UPDATER_URL = json["url"];
+                UPDATER_AUTHOR = json.links["author"];
+                UPDATER_GITHUB = json.links["github"];
+            }
+        }
+        async void checkUpdates()
+        {
+            await checkUpdater();
+            if(UPDATER_VERSION != CLIENT_VERSION)
+            {
+                update_version.Text = UPDATER_VERSION;
+                update_label.Visible = true;
+                update_version.Visible = true;
+                updater_button.Enabled = true;
+            }
+        }
 
+        //İNTERNET KONTROL
+        void checkNetwork()
+        {
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.disableAutoUpdater();
+                MessageBox.Show("Programın çalışabilmesi için lütfen internet bağlatınızı kontrol edin ve çalıştığından emin olun.",
+                "Uyarı.",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+                return;
+            }
+        }
+
+        //disable auto update
+        void disableAutoUpdater()
+        {
+            AutoUpdate = false;
+            autoUpdate_checkbox.Checked = false;
+            update_button.Enabled = true;
+        }
+
+        //DİSCORD
         void PresenceUpdate()
         {
             client.SetPresence(new RichPresence()
@@ -133,7 +185,7 @@ namespace DovizGUI
                     LargeImageKey = "ekonomi",
                     LargeImageText = "GBP => "+gbp_alis.Text,
                     SmallImageKey = "dolar",
-                    SmallImageText = "DövizGUI v"+version
+                    SmallImageText = "DövizGUI "+CLIENT_VERSION
                 }
             });
         }
@@ -152,16 +204,18 @@ namespace DovizGUI
 
 
         //Gereksiz
-
-
         private void author_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://emirkabal.xyz");
+            System.Diagnostics.Process.Start(UPDATER_AUTHOR);
         }
-
         private void github_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/emirkabal/DovizGUI/releases/");
+            System.Diagnostics.Process.Start(UPDATER_GITHUB);
+        }
+
+        private void updater_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(UPDATER_URL);
         }
     }
 }
