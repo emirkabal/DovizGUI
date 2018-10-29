@@ -48,15 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ekonomi.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dicsord-rpc">
-      <HintPath>C:\Users\emirk\Desktop\DovizGUI\dicsord-rpc.dll</HintPath>
-    </Reference>
-    <Reference Include="discord-rpc">
-      <HintPath>C:\Users\emirk\Desktop\DovizGUI\discord-rpc.dll</HintPath>
-    </Reference>
     <Reference Include="DiscordRPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\emirk\Desktop\doviz_win-1.0stable\DiscordRPC.dll</HintPath>
@@ -125,9 +120,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ekonomi.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

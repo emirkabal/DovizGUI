@@ -1,0 +1,12 @@
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\DovizGUI.exe.config
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\DovizGUI.exe
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\DovizGUI.pdb
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.DovizGUI.resources
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.Properties.Resources.resources
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.csproj.GenerateResource.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.csproj.CoreCompileInputs.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.exe
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.pdb
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.csproj.CopyComplete
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\Newtonsoft.Json.dll
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\Newtonsoft.Json.xml

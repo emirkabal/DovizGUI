@@ -1,0 +1,14 @@
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\DovizGUI.exe.config
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\DovizGUI.exe
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\DovizGUI.pdb
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\DiscordRPC.dll
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\Newtonsoft.Json.dll
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Release\Newtonsoft.Json.xml
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.csprojAssemblyReference.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.DovizGUI.resources
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.Properties.Resources.resources
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.csproj.GenerateResource.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.csproj.CoreCompileInputs.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.csproj.CopyComplete
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.exe
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Release\DovizGUI.pdb
