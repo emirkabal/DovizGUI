@@ -10,3 +10,5 @@ D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.pdb
 D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.csproj.CopyComplete
 D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\Newtonsoft.Json.dll
 D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\bin\Debug\Newtonsoft.Json.xml
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.csprojAssemblyReference.cache
+D:\Belgeler\Visual Studio\Projects\DovizGUI\DovizGUI\obj\Debug\DovizGUI.SettingsWindow.resources
