@@ -28,12 +28,7 @@ namespace DovizGUI
         // LOOP
         private void loop_Tick(object sender, EventArgs e)
         {
-            if (Settings.AutoUpdate == true)
-            {
-                //if (loop_bar.Value == loop_bar.Maximum) loop_bar.Value = 0;
-                //loop_bar.Value += 1;
-                this.update();
-            }
+            if (Settings.AutoUpdate == true) this.update();
         }
 
         //Güncelle - Button
@@ -56,9 +51,15 @@ namespace DovizGUI
         //LOAD
         private void DovizGUI_Load(object sender, EventArgs e)
         {
-            checkLoad();
-            loop_bar.Visible = false;
+            this.checkLoad();
             this.update();
+            this.updateLoopBar();
+        }
+
+        void updateLoopBar()
+        {
+            if (loop_bar.Value == loop_bar.Maximum) loop_bar.Value = 0;
+            loop_bar.Value += 1;
         }
 
 
@@ -269,6 +270,8 @@ namespace DovizGUI
 
         void checkLoad()
         {
+            loop.Interval = Settings.AutoLoadSecond * 1000;
+            loop_bar.Maximum = Settings.AutoLoadSecond;
             if (Settings.AutoUpdate == true)
             {
                 loop.Start();
@@ -278,9 +281,9 @@ namespace DovizGUI
             {
                 loop.Stop();
                 update_button.Enabled = true;
+                loop_bar.Visible = false;
             }
-
-            if(Settings.PresenceStatus == false) Discord.PresenceDelete();
+            if (Settings.PresenceStatus == false) Discord.PresenceDelete();
             else Discord.PresenceInstall();
 
 
@@ -294,6 +297,11 @@ namespace DovizGUI
             th = new Thread(opensettings);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
+        }
+
+        private void onsecond_Tick(object sender, EventArgs e)
+        {
+            this.updateLoopBar();
         }
     }
 }

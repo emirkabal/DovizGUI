@@ -9,9 +9,10 @@ namespace DovizGUI
     public static class Settings
     {
 
-        public static String CLIENT_VERSION = "v1.2.1-stable";
+        public static String CLIENT_VERSION = "v1.3-stable";
         public static Boolean PresenceStatus = false;
         public static Boolean AutoUpdate = true;
+        public static int AutoLoadSecond = 3;
         //UPDATER
         public static String UPDATER_VERSION = null;
         public static String UPDATER_URL = null;

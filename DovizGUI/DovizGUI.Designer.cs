@@ -112,6 +112,7 @@
             this.update_label = new System.Windows.Forms.Label();
             this.update_version = new System.Windows.Forms.Label();
             this.settings_button = new System.Windows.Forms.Button();
+            this.onsecond = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // usd_satis
@@ -372,6 +373,12 @@
             this.settings_button.UseVisualStyleBackColor = true;
             this.settings_button.Click += new System.EventHandler(this.settings_button_Click_1);
             // 
+            // onsecond
+            // 
+            this.onsecond.Enabled = true;
+            this.onsecond.Interval = 1000;
+            this.onsecond.Tick += new System.EventHandler(this.onsecond_Tick);
+            // 
             // DovizGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,6 +447,7 @@
         private System.Windows.Forms.Button update_button;
         private System.Windows.Forms.Timer loop;
         private System.Windows.Forms.Button settings_button;
+        private System.Windows.Forms.Timer onsecond;
     }
 }
 

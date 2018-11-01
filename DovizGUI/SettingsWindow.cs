@@ -33,6 +33,7 @@ namespace DovizGUI
 
         private void SettingsWindow_Load(object sender, EventArgs e)
         {
+            auto_second.Value = Settings.AutoLoadSecond;
             version_label.Text = Settings.CLIENT_VERSION;
             if (Settings.AutoUpdate == true) autoUpdate_checkbox.Checked = true;
             else if (Settings.AutoUpdate == false)  autoUpdate_checkbox.Checked = false;
@@ -49,6 +50,8 @@ namespace DovizGUI
             if (autoUpdate_checkbox.Checked == false) Settings.AutoUpdate = false;
             else Settings.AutoUpdate = true;
 
+            Settings.AutoLoadSecond = int.Parse(auto_second.Value.ToString());
+            
             openMainMenu();
         }
 
@@ -69,7 +72,6 @@ namespace DovizGUI
         {
             Application.Run(new DovizGUI());
         }
-
 
     }
 }

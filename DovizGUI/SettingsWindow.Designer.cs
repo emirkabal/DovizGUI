@@ -36,6 +36,8 @@
             this.github = new System.Windows.Forms.Button();
             this.kaydet = new System.Windows.Forms.Button();
             this.iptal = new System.Windows.Forms.Button();
+            this.auto_second = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.auto_second)).BeginInit();
             this.SuspendLayout();
             // 
             // richpresence
@@ -109,11 +111,34 @@
             this.iptal.UseVisualStyleBackColor = true;
             this.iptal.Click += new System.EventHandler(this.iptal_Click);
             // 
+            // auto_second
+            // 
+            this.auto_second.Location = new System.Drawing.Point(168, 11);
+            this.auto_second.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.auto_second.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.auto_second.Name = "auto_second";
+            this.auto_second.Size = new System.Drawing.Size(38, 20);
+            this.auto_second.TabIndex = 37;
+            this.auto_second.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 151);
+            this.ClientSize = new System.Drawing.Size(230, 152);
+            this.Controls.Add(this.auto_second);
             this.Controls.Add(this.iptal);
             this.Controls.Add(this.kaydet);
             this.Controls.Add(this.author);
@@ -126,6 +151,7 @@
             this.Name = "SettingsWindow";
             this.Text = "DövizGUI - Ayarlar";
             this.Load += new System.EventHandler(this.SettingsWindow_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.auto_second)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +166,6 @@
         private System.Windows.Forms.Button github;
         private System.Windows.Forms.Button kaydet;
         private System.Windows.Forms.Button iptal;
+        private System.Windows.Forms.NumericUpDown auto_second;
     }
 }
