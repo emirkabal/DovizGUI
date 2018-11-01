@@ -84,64 +84,14 @@
         }
         private void InitializeComponent()
         {
-
-            usd_satis = new System.Windows.Forms.Label();
-            loop = new System.Windows.Forms.Timer();
-            eur_satis = new System.Windows.Forms.Label();
-            update_button = new System.Windows.Forms.Button();
-            gbp_satis = new System.Windows.Forms.Label();
-            loop_bar = new System.Windows.Forms.ProgressBar();
-
-
-            loop.Enabled = true;
-            loop.Interval = 3000;
-            loop.Tick += new System.EventHandler(this.loop_Tick);
-
-
-            usd_satis.AutoSize = true;
-            usd_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            usd_satis.Location = new System.Drawing.Point(240, 66);
-            usd_satis.Name = "usd_satis";
-            usd_satis.Size = new System.Drawing.Size(90, 29);
-            usd_satis.TabIndex = 11;
-            usd_satis.Text = "0.0000";
-            eur_satis.AutoSize = true;
-            eur_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            eur_satis.Location = new System.Drawing.Point(240, 181);
-            eur_satis.Name = "eur_satis";
-            eur_satis.Size = new System.Drawing.Size(90, 29);
-            eur_satis.TabIndex = 16;
-            eur_satis.Text = "0.0000";
-            gbp_satis.AutoSize = true;
-            gbp_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            gbp_satis.Location = new System.Drawing.Point(240, 285);
-            gbp_satis.Name = "gbp_satis";
-            gbp_satis.Size = new System.Drawing.Size(90, 29);
-            gbp_satis.TabIndex = 21;
-            gbp_satis.Text = "0.0000";
-            update_button.Enabled = false;
-            update_button.Location = new System.Drawing.Point(168, 327);
-            update_button.Name = "update_button";
-            update_button.Size = new System.Drawing.Size(116, 32);
-            update_button.TabIndex = 26;
-            update_button.Text = "Güncelle";
-            update_button.UseVisualStyleBackColor = true;
-            update_button.Click += new System.EventHandler(this.update_button_Click);
-            loop_bar.Location = new System.Drawing.Point(168, 359);
-            loop_bar.Maximum = 5;
-            loop_bar.Name = "loop_bar";
-            loop_bar.Size = new System.Drawing.Size(116, 22);
-            loop_bar.TabIndex = 32;
-            this.Controls.Add(loop_bar);
-            this.Controls.Add(update_button);
-            this.Controls.Add(usd_satis);
-            this.Controls.Add(gbp_satis);
-            this.Controls.Add(eur_satis);
-
-
-
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DovizGUI));
+            this.usd_satis = new System.Windows.Forms.Label();
+            this.loop = new System.Windows.Forms.Timer(this.components);
+            this.eur_satis = new System.Windows.Forms.Label();
+            this.update_button = new System.Windows.Forms.Button();
+            this.gbp_satis = new System.Windows.Forms.Label();
+            this.loop_bar = new System.Windows.Forms.ProgressBar();
             this.usd_label = new System.Windows.Forms.Label();
             this.usd_alis = new System.Windows.Forms.Label();
             this.usd_alis_text = new System.Windows.Forms.Label();
@@ -161,9 +111,63 @@
             this.updater_button = new System.Windows.Forms.Button();
             this.update_label = new System.Windows.Forms.Label();
             this.update_version = new System.Windows.Forms.Label();
-            
             this.settings_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // usd_satis
+            // 
+            this.usd_satis.AutoSize = true;
+            this.usd_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.usd_satis.Location = new System.Drawing.Point(240, 66);
+            this.usd_satis.Name = "usd_satis";
+            this.usd_satis.Size = new System.Drawing.Size(90, 29);
+            this.usd_satis.TabIndex = 11;
+            this.usd_satis.Text = "0.0000";
+            // 
+            // loop
+            // 
+            this.loop.Enabled = true;
+            this.loop.Interval = 3000;
+            this.loop.Tick += new System.EventHandler(this.loop_Tick);
+            // 
+            // eur_satis
+            // 
+            this.eur_satis.AutoSize = true;
+            this.eur_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.eur_satis.Location = new System.Drawing.Point(240, 181);
+            this.eur_satis.Name = "eur_satis";
+            this.eur_satis.Size = new System.Drawing.Size(90, 29);
+            this.eur_satis.TabIndex = 16;
+            this.eur_satis.Text = "0.0000";
+            // 
+            // update_button
+            // 
+            this.update_button.Enabled = false;
+            this.update_button.Location = new System.Drawing.Point(168, 327);
+            this.update_button.Name = "update_button";
+            this.update_button.Size = new System.Drawing.Size(116, 32);
+            this.update_button.TabIndex = 26;
+            this.update_button.Text = "Güncelle";
+            this.update_button.UseVisualStyleBackColor = true;
+            this.update_button.Click += new System.EventHandler(this.update_button_Click);
+            // 
+            // gbp_satis
+            // 
+            this.gbp_satis.AutoSize = true;
+            this.gbp_satis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gbp_satis.Location = new System.Drawing.Point(240, 285);
+            this.gbp_satis.Name = "gbp_satis";
+            this.gbp_satis.Size = new System.Drawing.Size(90, 29);
+            this.gbp_satis.TabIndex = 21;
+            this.gbp_satis.Text = "0.0000";
+            // 
+            // loop_bar
+            // 
+            this.loop_bar.Location = new System.Drawing.Point(168, 359);
+            this.loop_bar.Maximum = 5;
+            this.loop_bar.Name = "loop_bar";
+            this.loop_bar.Size = new System.Drawing.Size(116, 22);
+            this.loop_bar.TabIndex = 32;
             // 
             // usd_label
             // 
@@ -185,10 +189,6 @@
             this.usd_alis.TabIndex = 5;
             this.usd_alis.Text = "0.0000";
             // 
-            // loop
-            // 
-
-            // 
             // usd_alis_text
             // 
             this.usd_alis_text.AutoSize = true;
@@ -208,14 +208,6 @@
             this.usd_satis_text.Size = new System.Drawing.Size(60, 25);
             this.usd_satis_text.TabIndex = 10;
             this.usd_satis_text.Text = "Satış";
-            // 
-            // usd_satis
-            // 
-
-            // 
-            // eur_satis
-            // 
-
             // 
             // eur_satis_text
             // 
@@ -256,10 +248,6 @@
             this.eur_label.Size = new System.Drawing.Size(72, 32);
             this.eur_label.TabIndex = 12;
             this.eur_label.Text = "EUR";
-            // 
-            // gbp_satis
-            // 
-
             // 
             // gbp_satis_text
             // 
@@ -331,10 +319,6 @@
             this.gbp_ad.Text = "None";
             this.gbp_ad.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // update_button
-            // 
-
-            // 
             // version_label
             // 
             this.version_label.AutoSize = true;
@@ -378,10 +362,6 @@
             this.update_version.Text = "1.0";
             this.update_version.Visible = false;
             // 
-            // loop_bar
-            // 
-
-            // 
             // settings_button
             // 
             this.settings_button.Location = new System.Drawing.Point(348, 359);
@@ -390,7 +370,7 @@
             this.settings_button.TabIndex = 33;
             this.settings_button.Text = "Ayarlar";
             this.settings_button.UseVisualStyleBackColor = true;
-            this.settings_button.Click += new System.EventHandler(this.settings_button_Click);
+            this.settings_button.Click += new System.EventHandler(this.settings_button_Click_1);
             // 
             // DovizGUI
             // 
@@ -399,26 +379,26 @@
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(462, 388);
             this.Controls.Add(this.settings_button);
-            
+            this.Controls.Add(this.loop_bar);
+            this.Controls.Add(this.update_button);
+            this.Controls.Add(this.usd_satis);
+            this.Controls.Add(this.gbp_satis);
+            this.Controls.Add(this.eur_satis);
             this.Controls.Add(this.update_version);
             this.Controls.Add(this.update_label);
             this.Controls.Add(this.updater_button);
             this.Controls.Add(this.version_label);
-            
             this.Controls.Add(this.gbp_ad);
             this.Controls.Add(this.usd_ad);
             this.Controls.Add(this.eur_ad);
-            
             this.Controls.Add(this.gbp_satis_text);
             this.Controls.Add(this.gbp_alis_text);
             this.Controls.Add(this.gbp_alis);
             this.Controls.Add(this.gbp_label);
-            
             this.Controls.Add(this.eur_satis_text);
             this.Controls.Add(this.eur_alis_text);
             this.Controls.Add(this.eur_alis);
             this.Controls.Add(this.eur_label);
-            
             this.Controls.Add(this.usd_satis_text);
             this.Controls.Add(this.usd_alis_text);
             this.Controls.Add(this.usd_alis);
@@ -453,13 +433,13 @@
         private System.Windows.Forms.Button updater_button;
         private System.Windows.Forms.Label update_label;
         private System.Windows.Forms.Label update_version;
+        private System.Windows.Forms.Label gbp_satis;
+        public System.Windows.Forms.ProgressBar loop_bar;
+        private System.Windows.Forms.Label eur_satis;
+        private System.Windows.Forms.Label usd_satis;
+        private System.Windows.Forms.Button update_button;
+        private System.Windows.Forms.Timer loop;
         private System.Windows.Forms.Button settings_button;
-        public static System.Windows.Forms.Label usd_satis;
-        public static System.Windows.Forms.Label eur_satis;
-        public static System.Windows.Forms.Label gbp_satis;
-        public static System.Windows.Forms.Button update_button;
-        public static System.Windows.Forms.Timer loop;
-        public static System.Windows.Forms.ProgressBar loop_bar;
     }
 }
 

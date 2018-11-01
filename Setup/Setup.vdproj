@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_41BE580DA2294B8CA53020CBB85C417A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6F05C5D61E264E0E8A843BF348A122C2"
         "OwnerKey" = "8:_FD51F18AD319F15094AAB7E532FE8833"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_6F05C5D61E264E0E8A843BF348A122C2"
-        "OwnerKey" = "8:_41BE580DA2294B8CA53020CBB85C417A"
+        "OwnerKey" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9090F2D2B261FF5CD30407C32A3D1947"
-        "OwnerKey" = "8:_41BE580DA2294B8CA53020CBB85C417A"
+        "OwnerKey" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -45,8 +39,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FD51F18AD319F15094AAB7E532FE8833"
-        "OwnerKey" = "8:_41BE580DA2294B8CA53020CBB85C417A"
+        "OwnerKey" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_41BE580DA2294B8CA53020CBB85C417A"
+        "OwnerKey" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -91,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +115,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -426,7 +442,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A955B73618624829A828145393230E24"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_323FF56894D042AEB0DD59981C1D1C87"
             {
             "Name" = "8:DövizGUI"
             "Arguments" = "8:"
@@ -434,13 +450,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_41BE580DA2294B8CA53020CBB85C417A"
-            "Folder" = "8:_7FA1B0BC053F4B3DAA2BA5D8539F96C0"
+            "Target" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
+            "Folder" = "8:_12725C3C0EE244C49CF879BEA665C85C"
             "WorkingFolder" = "8:_E141BB5243A94A159B8A385D4FEF7446"
             "Icon" = "8:_9EB5B6A376B44EB08836CC78B665D597"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AB129B8B6EF946E892EF2571D8F4E548"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DEE78F9119D04A269D69A0C94DDBD721"
             {
             "Name" = "8:DövizGUI"
             "Arguments" = "8:"
@@ -448,8 +464,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_41BE580DA2294B8CA53020CBB85C417A"
-            "Folder" = "8:_12725C3C0EE244C49CF879BEA665C85C"
+            "Target" = "8:_D63191E5D1F947768FC32EDDCDBF88FA"
+            "Folder" = "8:_7FA1B0BC053F4B3DAA2BA5D8539F96C0"
             "WorkingFolder" = "8:_E141BB5243A94A159B8A385D4FEF7446"
             "Icon" = "8:_9EB5B6A376B44EB08836CC78B665D597"
             "Feature" = "8:"
@@ -853,7 +869,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_41BE580DA2294B8CA53020CBB85C417A"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D63191E5D1F947768FC32EDDCDBF88FA"
             {
             "SourcePath" = "8:..\\DovizGUI\\obj\\Debug\\DovizGUI.exe"
             "TargetName" = "8:"

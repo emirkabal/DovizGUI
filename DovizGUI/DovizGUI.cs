@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,28 +9,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace DovizGUI
 {
     public partial class DovizGUI : Form
     {
-        public static String CLIENT_VERSION = "v1.2-stable";
-        public static Boolean PresenceStatus = false;
-        public static Boolean AutoUpdate = true;
-        //UPDATER
-        public static String UPDATER_VERSION = null;
-        public static String UPDATER_URL = null;
-        public static String UPDATER_AUTHOR = null;
-        public static String UPDATER_GITHUB = null;
-        //UPDATER
-        //DOVIZ KURLARI
-        public String USD_ALIS = null;
-        public String GBP_ALIS = null;
-        public String EUR_ALIS = null;
 
-        public String USD_SATIS = null;
-        public String EUR_SATIS = null;
-        public String GBP_SATIS = null;
+        Thread th;
+
         //DOVIZ KURLARI
         public DovizGUI()
         {
@@ -42,7 +28,7 @@ namespace DovizGUI
         // LOOP
         private void loop_Tick(object sender, EventArgs e)
         {
-            if (AutoUpdate == true)
+            if (Settings.AutoUpdate == true)
             {
                 //if (loop_bar.Value == loop_bar.Maximum) loop_bar.Value = 0;
                 //loop_bar.Value += 1;
@@ -57,27 +43,27 @@ namespace DovizGUI
         }
 
 
-        void update()
+        async void update()
         {
-            version_label.Text = CLIENT_VERSION;
+            version_label.Text = Settings.CLIENT_VERSION;
             this.checkNetwork();
             this.checkUpdates();
-            this.updateDoviz();
-            if (PresenceStatus == true) Discord.PresenceUpdate();
+            await this.updateDoviz();
+            if(Settings.PresenceStatus == true) Discord.PresenceUpdate();
         }
 
 
         //LOAD
         private void DovizGUI_Load(object sender, EventArgs e)
         {
+            checkLoad();
             loop_bar.Visible = false;
-            //loop_bar.Maximum = loop.Interval / 1000;
             this.update();
         }
 
 
         //DOVİZ UPDATE
-        async void updateDoviz()
+        async Task updateDoviz()
         {
             using (var httpClient = new HttpClient())
             {
@@ -101,45 +87,45 @@ namespace DovizGUI
                 gbp_satis.Text = json.value[2].satis;
                 usd_satis.Text = json.value[0].satis;
 
-                if (USD_ALIS != null && USD_SATIS != null && EUR_ALIS != null && EUR_SATIS != null && GBP_ALIS != null && GBP_SATIS != null)
+                if (Settings.USD_ALIS != null && Settings.USD_SATIS != null && Settings.EUR_ALIS != null && Settings.EUR_SATIS != null && Settings.GBP_ALIS != null && Settings.GBP_SATIS != null)
                 {
                     //long usd_alis_client = long.Parse(usd_alis.Text);
-                    if(float.Parse(usd_alis.Text) > float.Parse(USD_ALIS))
+                    if(float.Parse(usd_alis.Text) > float.Parse(Settings.USD_ALIS))
                     {
                         usd_label.ForeColor = System.Drawing.Color.LightGreen;
                         usd_ad.ForeColor = System.Drawing.Color.LightGreen;
                         usd_alis_text.ForeColor = System.Drawing.Color.LightGreen;
                         usd_alis.ForeColor = System.Drawing.Color.LightGreen;
                     }
-                    if(float.Parse(usd_satis.Text) > float.Parse(USD_SATIS))
+                    if(float.Parse(usd_satis.Text) > float.Parse(Settings.USD_SATIS))
                     {
                         usd_label.ForeColor = System.Drawing.Color.LightGreen;
                         usd_ad.ForeColor = System.Drawing.Color.LightGreen;
                         usd_satis_text.ForeColor = System.Drawing.Color.LightGreen;
                         usd_satis.ForeColor = System.Drawing.Color.LightGreen;
                     }
-                    if (float.Parse(eur_alis.Text) > float.Parse(EUR_ALIS))
+                    if (float.Parse(eur_alis.Text) > float.Parse(Settings.EUR_ALIS))
                     {
                         eur_label.ForeColor = System.Drawing.Color.LightGreen;
                         eur_ad.ForeColor = System.Drawing.Color.LightGreen;
                         eur_alis_text.ForeColor = System.Drawing.Color.LightGreen;
                         eur_alis.ForeColor = System.Drawing.Color.LightGreen;
                     }
-                    if (float.Parse(eur_satis.Text) > float.Parse(EUR_SATIS))
+                    if (float.Parse(eur_satis.Text) > float.Parse(Settings.EUR_SATIS))
                     {
                         eur_label.ForeColor = System.Drawing.Color.LightGreen;
                         eur_ad.ForeColor = System.Drawing.Color.LightGreen;
                         eur_satis_text.ForeColor = System.Drawing.Color.LightGreen;
                         eur_satis.ForeColor = System.Drawing.Color.LightGreen;
                     }
-                    if (float.Parse(gbp_alis.Text) > float.Parse(GBP_ALIS))
+                    if (float.Parse(gbp_alis.Text) > float.Parse(Settings.GBP_ALIS))
                     {
                         gbp_label.ForeColor = System.Drawing.Color.LightGreen;
                         gbp_ad.ForeColor = System.Drawing.Color.LightGreen;
                         gbp_alis_text.ForeColor = System.Drawing.Color.LightGreen;
                         gbp_alis.ForeColor = System.Drawing.Color.LightGreen;
                     }
-                    if (float.Parse(gbp_satis.Text) > float.Parse(GBP_SATIS))
+                    if (float.Parse(gbp_satis.Text) > float.Parse(Settings.GBP_SATIS))
                     {
                         gbp_label.ForeColor = System.Drawing.Color.LightGreen;
                         gbp_ad.ForeColor = System.Drawing.Color.LightGreen;
@@ -148,14 +134,14 @@ namespace DovizGUI
                     }
 
 
-                    if (float.Parse(usd_alis.Text) < float.Parse(USD_ALIS))
+                    if (float.Parse(usd_alis.Text) < float.Parse(Settings.USD_ALIS))
                     {
                         usd_label.ForeColor = System.Drawing.Color.Red;
                         usd_ad.ForeColor = System.Drawing.Color.Red;
                         usd_alis_text.ForeColor = System.Drawing.Color.Red;
                         usd_alis.ForeColor = System.Drawing.Color.Red;
                     }
-                    if (float.Parse(usd_satis.Text) < float.Parse(USD_SATIS))
+                    if (float.Parse(usd_satis.Text) < float.Parse(Settings.USD_SATIS))
                     {
                         usd_label.ForeColor = System.Drawing.Color.Red;
                         usd_ad.ForeColor = System.Drawing.Color.Red;
@@ -163,14 +149,14 @@ namespace DovizGUI
                         usd_satis.ForeColor = System.Drawing.Color.Red;
                     }
 
-                    if (float.Parse(eur_alis.Text) < float.Parse(EUR_ALIS))
+                    if (float.Parse(eur_alis.Text) < float.Parse(Settings.EUR_ALIS))
                     {
                         eur_label.ForeColor = System.Drawing.Color.Red;
                         eur_ad.ForeColor = System.Drawing.Color.Red;
                         eur_alis_text.ForeColor = System.Drawing.Color.Red;
                         eur_alis.ForeColor = System.Drawing.Color.Red;
                     }
-                    if (float.Parse(eur_satis.Text) < float.Parse(EUR_SATIS))
+                    if (float.Parse(eur_satis.Text) < float.Parse(Settings.EUR_SATIS))
                     {
                         eur_label.ForeColor = System.Drawing.Color.Red;
                         eur_ad.ForeColor = System.Drawing.Color.Red;
@@ -178,14 +164,14 @@ namespace DovizGUI
                         eur_satis.ForeColor = System.Drawing.Color.Red;
                     }
 
-                    if (float.Parse(gbp_alis.Text) < float.Parse(GBP_ALIS))
+                    if (float.Parse(gbp_alis.Text) < float.Parse(Settings.GBP_ALIS))
                     {
                         gbp_label.ForeColor = System.Drawing.Color.Red;
                         gbp_ad.ForeColor = System.Drawing.Color.Red;
                         gbp_alis_text.ForeColor = System.Drawing.Color.Red;
                         gbp_alis.ForeColor = System.Drawing.Color.Red;
                     }
-                    if (float.Parse(gbp_satis.Text) < float.Parse(GBP_SATIS))
+                    if (float.Parse(gbp_satis.Text) < float.Parse(Settings.GBP_SATIS))
                     {
                         gbp_label.ForeColor = System.Drawing.Color.Red;
                         gbp_ad.ForeColor = System.Drawing.Color.Red;
@@ -194,13 +180,13 @@ namespace DovizGUI
                     }
                 }
 
-                USD_ALIS = usd_alis.Text;
-                EUR_ALIS = eur_alis.Text;
-                GBP_ALIS = gbp_alis.Text;
+                Settings.USD_ALIS = usd_alis.Text;
+                Settings.EUR_ALIS = eur_alis.Text;
+                Settings.GBP_ALIS = gbp_alis.Text;
 
-                USD_SATIS = usd_satis.Text;
-                EUR_SATIS = eur_satis.Text;
-                GBP_SATIS = gbp_satis.Text;
+                Settings.USD_SATIS = usd_satis.Text;
+                Settings.EUR_SATIS = eur_satis.Text;
+                Settings.GBP_SATIS = gbp_satis.Text;
                 
 
 
@@ -208,6 +194,8 @@ namespace DovizGUI
                 //System.Diagnostics.Debug.WriteLine(json);
             }
         }
+
+
         //UPDATER
         async Task checkUpdater()
         {
@@ -215,10 +203,10 @@ namespace DovizGUI
             {
                 var str = await httpClient.GetStringAsync("http://api.emirkabal.xyz/dovizgui/updater.json");
                 dynamic json = JObject.Parse(str);
-                UPDATER_VERSION = json["version"];
-                UPDATER_URL = json["url"];
-                UPDATER_AUTHOR = json.links["author"];
-                UPDATER_GITHUB = json.links["github"];
+                Settings.UPDATER_VERSION = json["version"];
+                Settings.UPDATER_URL = json["url"];
+                Settings.UPDATER_AUTHOR = json.links["author"];
+                Settings.UPDATER_GITHUB = json.links["github"];
             }
         }
         async void checkUpdates()
@@ -226,13 +214,20 @@ namespace DovizGUI
             try { await checkUpdater(); }
             catch (Exception) { return; }
 
-            if(UPDATER_VERSION != CLIENT_VERSION)
+            if(Settings.UPDATER_VERSION != Settings.CLIENT_VERSION)
             {
-                update_version.Text = UPDATER_VERSION;
+                update_version.Text = Settings.UPDATER_VERSION;
                 update_label.Visible = true;
                 update_version.Visible = true;
                 updater_button.Enabled = true;
             }
+        }
+
+        void disableAutoUpdater()
+        {
+            Settings.AutoUpdate = false;
+            loop.Stop();
+            update_button.Enabled = true;
         }
 
         //İNTERNET KONTROL
@@ -241,7 +236,7 @@ namespace DovizGUI
             if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
                 SettingsWindow settings = new SettingsWindow();
-                settings.disableAutoUpdater();
+                disableAutoUpdater();
                 MessageBox.Show("Programın çalışabilmesi için lütfen internet bağlatınızı kontrol edin ve çalıştığından emin olun.",
                 "Uyarı!",
                 MessageBoxButtons.OK,
@@ -254,26 +249,51 @@ namespace DovizGUI
         //Gereksiz
         private void author_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(UPDATER_AUTHOR);
+            System.Diagnostics.Process.Start(Settings.UPDATER_AUTHOR);
         }
         private void github_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(UPDATER_GITHUB);
+            System.Diagnostics.Process.Start(Settings.UPDATER_GITHUB);
         }
 
         private void updater_button_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(UPDATER_URL);
+            System.Diagnostics.Process.Start(Settings.UPDATER_URL);
         }
 
-        private void settings_button_Click(object sender, EventArgs e)
+
+        private void opensettings()
         {
-            SettingsWindow settings = new SettingsWindow();
-            settings.Show();
+            Application.Run(new SettingsWindow());
         }
 
+        void checkLoad()
+        {
+            if (Settings.AutoUpdate == true)
+            {
+                loop.Start();
+                update_button.Enabled = false;
+            }
+            else
+            {
+                loop.Stop();
+                update_button.Enabled = true;
+            }
+
+            if(Settings.PresenceStatus == false) Discord.PresenceDelete();
+            else Discord.PresenceInstall();
 
 
 
+
+        }
+
+        private void settings_button_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            th = new Thread(opensettings);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
     }
 }

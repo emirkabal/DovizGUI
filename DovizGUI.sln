@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DovizGUI", "DovizGUI\DovizGUI.csproj", "{D38A5EE0-7154-4507-841D-90B283B518EE}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{3DA34CC9-A459-4FFC-AD73-5CD98BBA860F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{D38A5EE0-7154-4507-841D-90B283B518EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38A5EE0-7154-4507-841D-90B283B518EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D38A5EE0-7154-4507-841D-90B283B518EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DA34CC9-A459-4FFC-AD73-5CD98BBA860F}.Debug|Any CPU.ActiveCfg = Debug
-		{3DA34CC9-A459-4FFC-AD73-5CD98BBA860F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

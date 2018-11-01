@@ -11,14 +11,14 @@ namespace DovizGUI
         {
             client.SetPresence(new RichPresence()
             {
-                Details = "USD => " + DovizGUI.usd_satis.Text,
-                State = "EUR => " + DovizGUI.eur_satis.Text,
+                Details = "USD => " + Settings.USD_SATIS,
+                State = "EUR => " + Settings.EUR_SATIS,
                 Assets = new Assets()
                 {
                     LargeImageKey = "ekonomi",
-                    LargeImageText = "GBP => " + DovizGUI.gbp_satis.Text,
+                    LargeImageText = "GBP => " + Settings.GBP_SATIS,
                     SmallImageKey = "dolar",
-                    SmallImageText = "DövizGUI " + DovizGUI.CLIENT_VERSION
+                    SmallImageText = "DövizGUI " + Settings.CLIENT_VERSION
                 }
             });
         }
@@ -27,11 +27,11 @@ namespace DovizGUI
         {
             client = new DiscordRpcClient("505721093106040832");
             client.Initialize();
-            PresenceUpdate();
         }
 
         public static void PresenceDelete()
         {
+            if (client == null || client.CurrentPresence == null) return;
             client.ClearPresence();
             client.Dispose();
         }

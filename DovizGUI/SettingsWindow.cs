@@ -8,86 +8,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace DovizGUI
 {
     public partial class SettingsWindow : Form
     {
+        Thread th;
+
         public SettingsWindow()
         {
             InitializeComponent();
         }
 
-
-        public void disableAutoUpdater()
-        {
-            DovizGUI.AutoUpdate = false;
-            autoUpdate_checkbox.Checked = false;
-            DovizGUI.update_button.Enabled = true;
-        }
-
         private void author_Click(object sender, EventArgs e)
         {
-            DovizGUI doviz = new DovizGUI();
-            System.Diagnostics.Process.Start(DovizGUI.UPDATER_AUTHOR);
+            System.Diagnostics.Process.Start(Settings.UPDATER_AUTHOR);
         }
 
         private void github_Click(object sender, EventArgs e)
         {
-            DovizGUI doviz = new DovizGUI();
-            System.Diagnostics.Process.Start(DovizGUI.UPDATER_GITHUB);
+            System.Diagnostics.Process.Start(Settings.UPDATER_GITHUB);
         }
 
         private void SettingsWindow_Load(object sender, EventArgs e)
         {
-            version_label.Text = DovizGUI.CLIENT_VERSION;
-            if (DovizGUI.AutoUpdate == true) autoUpdate_checkbox.Checked = true;
-            else if (DovizGUI.AutoUpdate == false)  autoUpdate_checkbox.Checked = false;
+            version_label.Text = Settings.CLIENT_VERSION;
+            if (Settings.AutoUpdate == true) autoUpdate_checkbox.Checked = true;
+            else if (Settings.AutoUpdate == false)  autoUpdate_checkbox.Checked = false;
 
-            if (DovizGUI.PresenceStatus == false) richpresence.Checked = false;
-            else if (DovizGUI.PresenceStatus == true) richpresence.Checked = true;
+            if (Settings.PresenceStatus == false) richpresence.Checked = false;
+            else if (Settings.PresenceStatus == true) richpresence.Checked = true;
         }
 
         private void kaydet_Click(object sender, EventArgs e)
         {
-            if (richpresence.Checked == false)
-            {
-                if (DovizGUI.PresenceStatus == true)
-                {
-                    DovizGUI.PresenceStatus = false;
-                    Discord.PresenceDelete();
-                }
-            }
-            else
-            {
-                if(DovizGUI.PresenceStatus == false)
-                {
-                    DovizGUI.PresenceStatus = true;
-                    Discord.PresenceInstall();
-                }
-            }
+            if (richpresence.Checked == false) Settings.PresenceStatus = false;
+            else Settings.PresenceStatus = true;
 
-            if (autoUpdate_checkbox.Checked == false)
-            {
-                DovizGUI.AutoUpdate = false;
-                DovizGUI.loop.Stop();
-                //DovizGUI.loop_bar.Value = 0;
-                //DovizGUI.loop_bar.Visible = false;
-                DovizGUI.update_button.Enabled = true;
-            }
-            else
-            {
-                DovizGUI.AutoUpdate = true;
-                DovizGUI.loop.Start();
-                //DovizGUI.loop_bar.Visible = true;
-                DovizGUI.update_button.Enabled = false;
-            }
-            Close();
+            if (autoUpdate_checkbox.Checked == false) Settings.AutoUpdate = false;
+            else Settings.AutoUpdate = true;
+
+            openMainMenu();
         }
 
         private void iptal_Click(object sender, EventArgs e)
         {
-            Close();
+            openMainMenu();
         }
+
+        void openMainMenu()
+        {
+            this.Close();
+            th = new Thread(dovizgui);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+
+        private void dovizgui()
+        {
+            Application.Run(new DovizGUI());
+        }
+
+
     }
 }
